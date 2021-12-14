@@ -46,6 +46,83 @@ void help_open() {
 	return;
 }
 
+int own_cmd_handler(char ** parsed) {
+
+	int cl = 0;
+	if (parsed[0] == NULL)return 0;
+	if (parsed[0] != NULL && parsed[1] != NULL ) cl = 1 ;
+	char * cmd = parsed[0];
+	if (cl) {
+
+
+		char* pipes[2];
+		pipes[0] = cmd;
+		pipes[1] = parsed[1];
+
+		if (!strcmp(pipes[0], "color")) {
+			if (!strcmp(pipes[1], "r"))RED();
+			else if (!strcmp(pipes[1], "b"))BLUE();
+			else if (!strcmp(pipes[1], "k"))BLACK();
+			else if (!strcmp(pipes[1], "g"))GREEN();
+			else if (!strcmp(pipes[1], "y"))YELLOW();
+			else if (!strcmp(pipes[1], "c"))CYAN();
+			else if (!strcmp(pipes[1], "m"))MAGNETA();
+			else if (!strcmp(pipes[1], "a"))RESET_COLOR();
+			else if (!strcmp(pipes[1], "help")) {
+				RESET_COLOR();
+
+				printf("####### COLOR YARDIM #######\n");
+				RED();
+				printf("# RED     = color r\n");
+				BLACK();
+				printf("# BLACK   = color k\n");
+				BLUE();
+				printf("# BLUE    = color b\n");
+				GREEN();
+				printf("# GREEN   = color g\n");
+				YELLOW();
+				printf("# YELLOW  = color y\n");
+				CYAN();
+				printf("# CYAN    = color c\n");
+				MAGNETA();
+				printf("# MAGNETA = color m\n");
+				RESET_COLOR();
+				printf("# RESET   = color a\n");
+				printf("############################\n\n");
+			} else {
+				RESET_COLOR();
+				return 0;
+			}
+			return 1;
+		}
+	}
+
+
+	if (!strcmp(cmd , "clear"))clear();
+	else if (!strcmp(cmd , "help"))help_open();
+	else if (!strcmp(cmd , "exit"))m_exit();
+	else if (!strcmp(cmd , "quit"))m_exit();
+	else if (!strcmp(cmd, "showpid"))showpid();
+	else if (!strcmp(cmd , "cd"))changeDirectory(parsed);
+	else return 0;
+
+	return 1;
+}
+
+
+// own commands
+
+void clear() {
+	printf("\033[H\033[J");
+}
+
+
+void m_exit() {
+	printf("\nGüle Güle \n** Yine Bekleriz *\n* matrix iyi günler diler. **\n");
+	exit(0);
+
+}
+
 void changeDirectory(char* args[]) {
 	if (args[1] == NULL) {
 		chdir(getenv("HOME")); 
@@ -60,4 +137,13 @@ void changeDirectory(char* args[]) {
 		}
 	}
 	
+}
+
+//Kabuk tarafından oluşturulmuş en az 5 yavru proses PID’sini ekrana yazdırır
+void showpid(){
+	int iter = 0;
+	for(iter; iter < array_size ; iter++)
+	{
+		printf("%lu\n", pid_array[iter]);
+	}
 }
