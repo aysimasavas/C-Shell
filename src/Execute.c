@@ -23,6 +23,29 @@ int exec_cmd(char ** parsed) {
 	}
 }
 
+void exec_cmd_piped3(char **parsed, char * parsedpipe[MAXLINE][MAXLINE]) {
+
+	for (int i = 0; i < MAXLINE; ++i)
+	{
+		if (parsedpipe[i] == NULL || parsedpipe[i][0] == NULL )break;
+		if (own_cmd_handler(parsedpipe[i])) continue;
+		exec_cmd(parsedpipe[i]);
+	}
+}
+
+void help_open() {
+	puts("\n**MATRIX Yardim **"
+	     "\nCopyright @ Ayse Aysima Savas, Yusuf Sonmez, Melek Selin Uysal, Seyma Gol, Ruhid Ibadli"
+	     "\n-matrix i kullanırkan oluşabilecek butun hasarlardan siz sorumlusunuz."
+	     "\nDesteklenen Ekstra kodlar:"
+	     "\n>cd"
+	     "\n>showpid"
+	     "\n>exit"
+	     "\n>UNIX shell de bulabileceginiz butun temel komutlara sahiptir"
+	     "\n>Sirali komut calistirabilir");
+	return;
+}
+
 void changeDirectory(char* args[]) {
 	if (args[1] == NULL) {
 		chdir(getenv("HOME")); 
