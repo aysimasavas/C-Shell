@@ -1,11 +1,11 @@
 "# OSPro21" 
 
 GRUP:
-AYŞE AYSİMA SAVAŞ B191210056
-MELEK SELİN UYSAL B191210035
-ŞEYMA GÖL         B191210029
-RUHİD İBADLI      B191210551
-YUSUF SÖNMEZ      B181210071
+AYŞE AYSİMA SAVAŞ 
+MELEK SELİN UYSAL 
+ŞEYMA GÖL         
+RUHİD İBADLI      
+YUSUF SÖNMEZ      
 
 PROJEDEKİ DOSYALAR/DİZİNLER
 1.bin
@@ -48,14 +48,6 @@ showpid fonksiyonu, daha önceden oluşturulmuş pid_array isimli proses idlerin
 
 Geliştirme sırasında yaşanan zorluklar:
 Görev dağılımı sırasında zorlandık fakat genel olarak iyi bir iş çıkarttığımızı düşünüyoruz.
-
-
-Kaynaklar:
-https://stackoverflow.com/questions/43749628/how-can-i-implement-cd-command-in-my-own-shell-in-c
-https://brennan.io/2015/01/16/write-a-shell-in-c/
-https://www.geeksforgeeks.org/making-linux-shell-c/
-https://github.com/jmreyes/simple-c-shell
-https://github.com/shradhasehgal/C-Shell
 
 
 
